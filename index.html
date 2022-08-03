@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+    integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+
+   <style>
+      .myNav {
+        /* height: 60px; */
+        background-color: rgba(0, 0, 0, 0)!important;
+        transition: 0.8s;
+      }
+      
+      .myNavScroll {
+        background-color: rgb(88, 109, 133)!important;
+        transition: 0.8s;
+        
+      }
+      
+      .myNavScroll a,.myNavScroll>button{
+        color: white!important;
+        border-color: rgb(211, 211, 211)!important;
+      }
+
+      .myNavScroll>button>span {
+        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 30 30'%3e%3cpath stroke='white' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e")!important;
+      }
+
+      .myLogo {
+        font-size: 28px;
+      }
+
+     .banner {
+      background: url('./img/CMPV2468.JPG') no-repeat ;
+      background-size: cover;
+      background-position: bottom right;
+      height: 100vh;
+      position: relative;
+      background-attachment: fixed;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+     }
+
+     .banner::before {
+      content: "";
+      background-color: rgba(255, 255, 255, 0.377);
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      right: 0;
+      left: 0;
+     }
+
+     .test {
+      height: 200vh;
+     }
+
+     .bannerText {
+        position: absolute;
+     }
+   </style> 
+</head>
+
+<body>
+  <!-- header -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-light px-5 py-2 fixed-top myNav">
+    <a class="navbar-brand myLogo" href="#">Navbar</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02"
+      aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse justify-content-end" id="navbarTogglerDemo02">
+      <ul class="navbar-nav mt-2 mt-lg-0 ">
+        <li class="nav-item active">
+          <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Link</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link">Disabled</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- banner -->
+
+  <div class="jumbotron jumbotron-fluid banner">
+
+    <div class="container bannerText">
+      <h1 class="display-4">Hi I'm FY Kuo.</h1>
+      <p class="lead">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p>
+    </div>
+
+  </div>
+
+  <div class="container test">
+
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" referrerpolicy="no-referrer"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+    integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js"
+    integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+"
+    crossorigin="anonymous"></script>
+</body>
+
+<script>
+  $(document).ready(function(){
+    
+    $(document).scroll(function(){
+
+      if($(document).scrollTop() > 150){
+        $('.myNav').addClass('myNavScroll');
+      }else{
+        $('.myNav').removeClass('myNavScroll')
+      }
+
+    })
+
+
+  })
+</script>
+
+</html>
