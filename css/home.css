@@ -1,0 +1,90 @@
+.myNav {
+  /* height: 60px; */
+  background-color: rgba(0, 0, 0, 0)!important;
+  transition: 0.8s;
+}
+
+.myNavScroll {
+  background-color: rgb(88, 109, 133)!important;
+  transition: 0.8s;
+  
+}
+
+.myNavScroll a,.myNavScroll>button{
+  color: white!important;
+  border-color: rgb(211, 211, 211)!important;
+}
+
+.myNavScroll>button>span {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 30 30'%3e%3cpath stroke='white' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e")!important;
+}
+
+.myLogo {
+  font-size: 28px;
+}
+
+.banner {
+background: url('./img/CMPV2468.JPG') no-repeat ;
+background-size: cover;
+background-position: bottom right;
+height: 100vh;
+position: relative;
+background-attachment: fixed;
+display: flex;
+justify-content: center;
+align-items: center;
+}
+
+.banner::before {
+content: "";
+background-color: rgba(255, 255, 255, 0.377);
+position: absolute;
+top: 0;
+bottom: 0;
+right: 0;
+left: 0;
+}
+
+.bannerText {
+  position: absolute;
+}
+
+.introduce {
+  height: 92vh;
+  width: 100%;
+  /* background-color: rgb(195, 202, 211); */
+  display: flex;
+  /* align-items: center; */
+  flex-wrap: wrap;
+
+}
+
+.myTitle {
+align-self: start;
+text-align: center;
+padding: 30px 0;
+}
+
+.myTitle>h2 {
+  width: fit-content;
+  margin: auto;
+  border-bottom: 5px solid rgb(88, 109, 133);
+  padding: 5px 0;
+}
+
+h1 {
+width: 100%;
+}
+
+.myPhoto {
+border-radius: 10px;
+width: 300px;
+height: 300px;
+}
+
+
+.skill {
+height: 92vh;
+width: 100%;
+background-color: rgb(232, 233, 235);
+}
