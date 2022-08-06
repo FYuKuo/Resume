@@ -41,4 +41,8 @@ $data = $Contact->find(1);
 
         </div>
     </form>
+
 </div>
+<footer>
+    &copy; <?=date('Y')?> FY
+</footer>

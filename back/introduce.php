@@ -3,6 +3,7 @@ $Introduce = new DB('resume_introduce');
 $text = $Introduce->find(1)['text'];
 ?>
 <div class="container right_content">
+
     <!-- 麵包屑 -->
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
@@ -35,4 +36,8 @@ $text = $Introduce->find(1)['text'];
 
         </div>
     </form>
+
 </div>
+<footer>
+    &copy; <?=date('Y')?> FY
+</footer>

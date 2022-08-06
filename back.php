@@ -1,5 +1,5 @@
 <?php
-$do = $_GET['do']??'main';
+$do = $_GET['do'] ?? 'main';
 include('./api/base.php');
 ?>
 <!DOCTYPE html>
@@ -26,7 +26,7 @@ include('./api/base.php');
                 <button class="navbar-toggler left_toggler" type="button">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                
+
                 <a class="navbar-brand phone_logo" href="./back.php">
                     FY's Resume 後台管理
                 </a>
@@ -89,9 +89,9 @@ include('./api/base.php');
 
         <div class="right">
             <?php
-            if(file_exists('./back/'.$do.'.php')){
-                include('./back/'.$do.'.php');
-            }else{
+            if (file_exists('./back/' . $do . '.php')) {
+                include('./back/' . $do . '.php');
+            } else {
                 to('./back.php');
             }
             ?>
@@ -106,12 +106,41 @@ include('./api/base.php');
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js" integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+" crossorigin="anonymous"></script>
 
     <script>
+        // nav
         $('.left_toggler').click(function() {
             $('.left').fadeToggle();
         })
 
         $('.user_toggler').click(function() {
             $('.user_nav').fadeToggle();
+        })
+
+        // resume
+        $(".sh_bg").click(function() {
+            if ($(this).css('justify-content') == 'start') {
+                console.log('123');
+                $(this).removeClass('sh_show');
+                $(this).children().removeClass('sh_btn_show');
+
+                let sh = 0;
+                let id = $(this).data('id');
+
+                $.post('./api/resume_sh.php',{id:id,sh:sh},()=>{
+                    // location.reload();
+                })
+                
+            }else{
+                
+                $(this).addClass('sh_show');
+                $(this).children().addClass('sh_btn_show');           
+                
+                let sh = 1;
+                let id = $(this).data('id');
+
+                $.post('./api/resume_sh.php',{id:id,sh:sh},()=>{
+                    // location.reload();
+                })
+            }
         })
     </script>
 </body>

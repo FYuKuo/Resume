@@ -56,7 +56,7 @@
     top: 60px;
     bottom: 0;
     right: 0;
-    overflow: hidden;
+    overflow: auto;
     background-color: rgb(238, 238, 238);
     width: calc(100% - 270px);
 }
@@ -83,7 +83,7 @@
 }
 
 .right_content {
-    height: 100%;
+    height: calc(100% - 64px);
 }
 
 .right_content>h2,.right_content>h4 {
@@ -104,20 +104,28 @@
     text-decoration: none;
 }
 
+form {
+    margin-bottom: 20px;
+}
+
 .form_group {
     background-color: white;
     width: 98%;
     margin: auto;
-    border-radius: 5px;
+    border-radius: 7px;
+    border: 1px solid lightgray;
 }
 
 
 .form_item {
-    padding: 15px 20px;
+    padding: 12px 20px;
 }
 
 .form_item_Title {
     border-bottom: 1px solid lightgray;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
 .form_item_header {
@@ -127,6 +135,7 @@
 
 .form_item_text {
     color: grey;
+    margin: 5px 0;
 }
 
 .form_item_Btn {
@@ -134,6 +143,73 @@
     display: flex;
     justify-content: end;
 }
+
+
+.form_item_group:not(:last-child) {
+    border-bottom: 1px solid lightgray;
+}
+
+.form_item_control {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.form_item_num {
+    width: fit-content;
+}
+
+.form_item_btns,.form_item_sh {
+    display: flex;
+    align-items: center;
+    margin-left: 25px;
+    padding: 0 4px;
+}
+
+.order_btn > button {
+    border-radius: 15px;
+    width: 50px;
+    padding: 0;
+}
+
+.sh_bg {
+    width: 50px;
+    height: 20px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    transition: 0.8s;
+    background-color: rgb(205, 208, 212);
+    justify-content: end;
+    box-shadow:  0 0 5px rgb(139, 139, 139);
+}
+
+.sh_btn {
+    width: 22px;
+    height: 22px;
+    border-radius: 22px;
+    transition: 0.8s;
+    background-color: rgb(128, 128, 128);
+
+}
+
+.sh_show {
+    background-color: rgb(84, 157, 235);
+    justify-content: start;
+}
+
+.sh_btn_show {
+    background-color: rgb(41, 123, 211);
+}
+
+footer {
+
+    padding: 20px 0;
+    text-align: center;
+
+}
+
 
 
 @media (max-width: 1000px) {
