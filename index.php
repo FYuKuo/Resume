@@ -1,6 +1,8 @@
 <?php
 include('./api/base.php');
 $Introduce = new DB('resume_introduce');
+$Contact = new DB('resume_contact');
+
 ?>
 
 <!DOCTYPE html>
@@ -18,7 +20,7 @@ $Introduce = new DB('resume_introduce');
 </head>
 
 <body>
-  <!-- header -->
+  <!-- nav -->
   <nav class="navbar navbar-expand-lg navbar-light bg-light px-lg-5 py-2 fixed-top myNav">
     <a class="navbar-brand myLogo" href="#">FY's Resume</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
@@ -39,9 +41,9 @@ $Introduce = new DB('resume_introduce');
       </ul>
     </div>
   </nav>
+  <!-- nav end -->
 
   <!-- banner -->
-
   <div class="banner">
 
     <div class="container bannerText">
@@ -50,8 +52,10 @@ $Introduce = new DB('resume_introduce');
     </div>
 
   </div>
+  <!-- banner end -->
 
-  <div class="introduce">
+  <!-- introduce-->
+  <div class="introduce box_item">
     <div class="container myTitle">
       <h2>
         About
@@ -67,22 +71,75 @@ $Introduce = new DB('resume_introduce');
         </div>
 
         <div class="myText col-lg-5 col-sm-10 mx-4 my-4">
-          <pre><?=$Introduce->find(1)['text']?></pre>
+          <pre><?= $Introduce->find(1)['text'] ?></pre>
         </div>
 
       </div>
     </div>
 
   </div>
+  <!-- introduce end -->
 
-  <div class="skill">
+  <!-- skill -->
+  <div class="skill box_item">
     <div class="container myTitle">
       <h2>
-        Skill
+        Skills
       </h2>
 
     </div>
   </div>
+  <!-- introduce end -->
+
+  <!-- Resume -->
+  <div class="Resume box_item">
+    <div class="container myTitle">
+      <h2>
+        Resume
+      </h2>
+
+    </div>
+  </div>
+  <!-- Resume end -->
+
+  <!-- Portfolio -->
+  <div class="Portfolio box_item">
+    <div class="container myTitle">
+      <h2>
+        Portfolio
+      </h2>
+
+    </div>
+  </div>
+  <!-- Portfolio end -->
+
+  <!-- contact -->
+  <div class="contact box_item">
+    <div class="container myTitle">
+      <h2>
+        Contact
+      </h2>
+
+      <div class="container">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3639.6936687803554!2d120.60035871499973!3d24.1824737780497!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x34693e1c3a406707%3A0xd43d01bc4fb2806a!2z5p2x5rW35aSn5a24!5e0!3m2!1szh-TW!2stw!4v1659794091107!5m2!1szh-TW!2stw" width="360" height="270" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+        <div class="contact_text">
+          <p>
+            <span><i class="fa-solid fa-location-dot"></i></span> <?= $Contact->find(1)['address'] ?>
+          </p>
+          <p>
+            <span><i class="fa-solid fa-mobile-screen-button"></i></span> <?= $Contact->find(1)['tel'] ?>
+          </p>
+          <p>
+            <span><i class="fa-solid fa-envelope"></i> </span><?= $Contact->find(1)['email'] ?>
+          </p>
+        </div>
+
+
+      </div>
+    </div>
+  </div>
+  <!-- contact end -->
 
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" referrerpolicy="no-referrer"></script>

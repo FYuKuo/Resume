@@ -67,7 +67,7 @@ include('./api/base.php');
             <a href="?do=introduce" class=" left_item">
                 <span><i class="fa-solid fa-id-card"></i></span> 個人簡介管理
             </a>
-            <a href="?do=experience" class=" left_item">
+            <a href="?do=resume" class=" left_item">
                 <span><i class="fa-solid fa-briefcase"></i></span> 工作經驗管理
             </a>
             <a href="?do=portfolio" class=" left_item">
