@@ -24,7 +24,7 @@
 }
 
 .banner {
-background: url('./img/CMPV2468.JPG') no-repeat ;
+background: url('../img/CMPV2468.JPG') no-repeat ;
 background-size: cover;
 background-position: bottom right;
 height: 100vh;
