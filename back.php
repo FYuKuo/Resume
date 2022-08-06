@@ -26,10 +26,15 @@ include('./api/base.php');
                 <button class="navbar-toggler left_toggler" type="button">
                     <span class="navbar-toggler-icon"></span>
                 </button>
+                
+                <a class="navbar-brand phone_logo" href="./back.php">
+                    FY's Resume 後台管理
+                </a>
 
                 <button class="navbar-toggler user_toggler" type="button">
                     <i class="fa-solid fa-ellipsis-vertical"></i>
                 </button>
+
 
                 <div class="user_nav">
                     <ul class="navbar-nav mt-2 mt-lg-0 ">
@@ -49,7 +54,7 @@ include('./api/base.php');
 
 
             <nav class="navbar navbar-expand-lg navbar-light bg-light left_nav">
-                <a class="navbar-brand" href="#">
+                <a class="navbar-brand" href="./back.php">
                     FY's Resume 後台管理
                 </a>
 
