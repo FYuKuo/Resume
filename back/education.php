@@ -15,11 +15,9 @@ $rows = $Education->all("ORDER BY `order_num` DESC");
         </ol>
     </nav>
 
-    <!-- form -->
-    <form action="./api/resume.php" method="post">
-        <div class="form_group">
-
-            <div class="form_item form_item_Title">
+    <div class="form_group">
+        
+        <div class="form_item form_item_Title">
                 <div>
                     <div class="form_item_header">
                         學習歷程管理
@@ -36,7 +34,7 @@ $rows = $Education->all("ORDER BY `order_num` DESC");
 
                 </div>
             </div>
-
+            
             <!-- modal -->
             <div class="modal fade" id="addModal" tabindex="-1" aria-labelledby="addModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
@@ -49,17 +47,17 @@ $rows = $Education->all("ORDER BY `order_num` DESC");
                             </button>
                         </div>
                         <!-- modal-header end -->
-
+                        
                         <!-- modal-body -->
                         <div class="modal-body">
                             <form>
                                 <div class="form-group">
                                     <label for="title" class="col-form-label">學校名稱&科系</label>
-                                    <input type="text" class="form-control" id="title">
+                                    <input type="text" class="form-control" id="title" required>
                                 </div>
                                 <div class="form-group">
                                     <label for="during" class="col-form-label">就讀期間</label>
-                                    <input type="text" class="form-control" id="during">
+                                    <input type="text" class="form-control" id="during" required>
                                 </div>
                                 <div class="form-group">
                                     <label for="text" class="col-form-label">文字描述</label>
@@ -68,19 +66,21 @@ $rows = $Education->all("ORDER BY `order_num` DESC");
                             </form>
                         </div>
                         <!-- modal-body end -->
-
+                        
                         <!-- modal-footer -->
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
                             <button type="button" class="btn btn-primary" id="addBtn">確定新增</button>
                         </div>
                         <!-- modal-footer end -->
-
+                        
                     </div>
                 </div>
             </div>
             <!-- modal end -->
-
+            
+            <!-- form -->
+            <form action="./api/resume.php" method="post">
             <!-- data -->
             <div>
                 <?php

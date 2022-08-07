@@ -131,11 +131,13 @@ include('./api/base.php');
         })
 
 
-        // portfolio submit
-        // $('.form_group').on('click','#addAdminBtn',function(){
-        //     console.log($('#portfolioForm'));
-        //     $('#portfolioForm').submit();
-        // })
+        //custom-file show name
+        $(document).ready(function() {
+            $(".custom-file-input").change(function() {
+                $(this).next(".custom-file-label").html($(this).val().split("\\").pop());
+
+            });
+        });
     </script>
 </body>
 
