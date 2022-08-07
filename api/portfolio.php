@@ -4,18 +4,17 @@ $Portfolio = new DB('resume_portfolio');
 
 if(isset($_POST['id'])){
 
-    foreach ($_POST['id'] as $key => $id) {
         
-        $data = $Portfolio->find($id);
+    $data = $Portfolio->find($_POST['id']);
 
-        $data['title'] = $_POST['title']["$key"];
-        $data['text'] = $_POST['text']["$key"];
-        $data['type'] = $_POST['type']["$key"];
-        $data['href'] = $_POST['href']["$key"];
+    $data['title'] = $_POST['title'];
+    $data['text'] = $_POST['text'];
+    $data['type'] = $_POST['type'];
+    $data['href'] = $_POST['href'];
 
-        $Portfolio->save($data);
-        // dd($data);
-    }
+    $Portfolio->save($data);
+    // dd($data);
+    
 
 }
 

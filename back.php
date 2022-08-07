@@ -64,28 +64,28 @@ include('./api/base.php');
         </div>
 
         <div class="left">
-            <a href="?do=introduce" class=" left_item">
+            <a href="?do=introduce" class=" left_item <?=($do == 'introduce')?'left_item_active':''?>">
                 <span><i class="fa-solid fa-id-card"></i></span> 個人簡介管理
             </a>
-            <a href="?do=education" class=" left_item">
+            <a href="?do=education" class=" left_item <?=($do == 'education')?'left_item_active':''?>">
                 <span><i class="fa-solid fa-graduation-cap"></i></span> 學習歷程管理
             </a>
-            <a href="?do=resume" class=" left_item">
+            <a href="?do=resume" class=" left_item <?=($do == 'resume')?'left_item_active':''?>">
                 <span><i class="fa-solid fa-briefcase"></i></span> 工作經驗管理
             </a>
-            <a href="?do=portfolio" class=" left_item">
+            <a href="?do=portfolio" class=" left_item <?=($do == 'portfolio')?'left_item_active':''?>">
                 <span><i class="fa-solid fa-palette"></i></span> 作品集管理
             </a>
-            <a href="?do=contact" class=" left_item">
+            <a href="?do=contact" class=" left_item <?=($do == 'contact')?'left_item_active':''?>">
                 <span><i class="fa-solid fa-phone"></i></span> 聯絡資訊管理
             </a>
-            <a href="?do=banner" class=" left_item">
+            <a href="?do=banner" class=" left_item <?=($do == 'banner')?'left_item_active':''?>">
                 <span><i class="fa-solid fa-image"></i></span> Banner管理
             </a>
-            <a href="?do=logo" class=" left_item">
+            <a href="?do=logo" class=" left_item <?=($do == 'logo')?'left_item_active':''?>">
                 <span><i class="fa-solid fa-palette"></i></span> Logo管理
             </a>
-            <a href="?do=admin" class=" left_item">
+            <a href="?do=admin" class=" left_item <?=($do == 'admin')?'left_item_active':''?>">
                 <span><i class="fa-solid fa-user"></i></span> 帳號管理
             </a>
         </div>
@@ -131,13 +131,42 @@ include('./api/base.php');
         })
 
 
-        //custom-file show name
         $(document).ready(function() {
+            //custom-file show name
             $(".custom-file-input").change(function() {
                 $(this).next(".custom-file-label").html($(this).val().split("\\").pop());
 
             });
+
+            // img edit hover
+            $('.form_item_img>img').mouseover(function(){
+
+                $(this).next().addClass('form_item_img_btn_show');
+
+                $('.form_item_img_btn').mouseover(function(){
+
+                    $(this).addClass('form_item_img_btn_show');
+
+                })
+            })
+
+            $('.form_item_img_btn').mouseout(function(){
+                $(this).removeClass('form_item_img_btn_show');
+            })
+
+
+
+            // img form submit
+            $('.edit_img_file').change(function(){
+                // console.log($(this).parent());
+                $(this).parent().submit();
+            })
+
+
+
         });
+
+
     </script>
 </body>
 
