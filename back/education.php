@@ -1,6 +1,6 @@
 <?php
-$Resume = new DB('resume_resume');
-$rows = $Resume->all("ORDER BY `order_num` DESC");
+$Education = new DB('resume_education');
+$rows = $Education->all("ORDER BY `order_num` DESC");
 ?>
 <div class="right_content">
     <!-- 麵包屑 -->
@@ -10,7 +10,7 @@ $rows = $Resume->all("ORDER BY `order_num` DESC");
                 <a href="./back.php">後台管理</a>
             </li>
             <li class="breadcrumb-item active">
-                工作經驗管理
+                學習歷程管理
             </li>
         </ol>
     </nav>
@@ -22,7 +22,7 @@ $rows = $Resume->all("ORDER BY `order_num` DESC");
             <div class="form_item form_item_Title">
                 <div>
                     <div class="form_item_header">
-                        工作經驗管理
+                        學習歷程管理
                     </div>
                     <div class="form_item_text">
                         請輸入要更新的文字內容
@@ -43,7 +43,7 @@ $rows = $Resume->all("ORDER BY `order_num` DESC");
                     <div class="modal-content">
                         <!-- modal-header -->
                         <div class="modal-header">
-                            <h5 class="modal-title" id="addModalLabel">新增工作經驗</h5>
+                            <h5 class="modal-title" id="addModalLabel">新增學習歷程</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
@@ -54,11 +54,11 @@ $rows = $Resume->all("ORDER BY `order_num` DESC");
                         <div class="modal-body">
                             <form>
                                 <div class="form-group">
-                                    <label for="title" class="col-form-label">公司名稱&職稱</label>
+                                    <label for="title" class="col-form-label">學校名稱&科系</label>
                                     <input type="text" class="form-control" id="title">
                                 </div>
                                 <div class="form-group">
-                                    <label for="during" class="col-form-label">任職期間</label>
+                                    <label for="during" class="col-form-label">就讀期間</label>
                                     <input type="text" class="form-control" id="during">
                                 </div>
                                 <div class="form-group">
@@ -111,11 +111,11 @@ $rows = $Resume->all("ORDER BY `order_num` DESC");
 
                         </div>
                         <div class="form_item">
-                            <div class="form_item_text">公司名稱&職稱</div>
+                            <div class="form_item_text">學校名稱&科系</div>
                             <input type="text" name="title[]" value="<?= $row['title'] ?>" class="form-control">
                         </div>
                         <div class="form_item">
-                            <div class="form_item_text">任職期間</div>
+                            <div class="form_item_text">就讀期間</div>
                             <input type="text" name="during[]" value="<?= $row['during'] ?>" class="form-control">
                         </div>
                         <div class="form_item">

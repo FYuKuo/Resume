@@ -1,10 +1,11 @@
 <?php
 include('./base.php');
+$table = "resume_".$_POST['table'];
+$DB = new DB($table);
 
-$Resume = new DB('resume_resume');
-$data = $Resume->find($_POST['id']);
+$data = $DB->find($_POST['id']);
 
 $data['sh'] = $_POST['sh'];
 
-$Resume->save($data);
+$DB->save($data);
 ?>

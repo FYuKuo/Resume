@@ -1,12 +1,13 @@
 <?php
 include('./base.php');
-$Resume = new DB('resume_resume');
-$data = $Resume->find($_POST['id']);
-$pre_data = $Resume->find($_POST['pre_id']);
+$table = "resume_".$_POST['table'];
+$DB = new DB($table);
+$data = $DB->find($_POST['id']);
+$pre_data = $DB->find($_POST['pre_id']);
 
 $data['order_num'] = $_POST['pre_order'];
 $pre_data['order_num'] = $_POST['order'];
 
-$Resume->save($data);
-$Resume->save($pre_data);
+$DB->save($data);
+$DB->save($pre_data);
 ?>

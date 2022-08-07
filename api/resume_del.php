@@ -1,6 +1,9 @@
 <?php
 include('./base.php');
-$Resume = new DB('resume_resume');
+$table = "resume_".$_POST['table'];
+$DB = new DB($table);
 
-$Resume->del($_POST['id']);
+$DB->del($_POST['id']);
+
+echo $table;
 ?>

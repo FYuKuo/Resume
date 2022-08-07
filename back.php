@@ -22,7 +22,7 @@ include('./api/base.php');
 
         <div class="nav_top d-flex ">
 
-            <nav class="navbar navbar-expand-lg navbar-light bg-light px-lg-5 py-2 justify-content-end right_nav">
+            <nav class="navbar shadow-sm  navbar-expand-lg navbar-light bg-light px-lg-5 py-2 justify-content-end right_nav">
                 <button class="navbar-toggler left_toggler" type="button">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -67,6 +67,9 @@ include('./api/base.php');
             <a href="?do=introduce" class=" left_item">
                 <span><i class="fa-solid fa-id-card"></i></span> 個人簡介管理
             </a>
+            <a href="?do=education" class=" left_item">
+                <span><i class="fa-solid fa-graduation-cap"></i></span> 學習歷程管理
+            </a>
             <a href="?do=resume" class=" left_item">
                 <span><i class="fa-solid fa-briefcase"></i></span> 工作經驗管理
             </a>
@@ -104,8 +107,20 @@ include('./api/base.php');
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js" integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+" crossorigin="anonymous"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
-    <script>
 
+    <!-- resume orderbtn -->
+    <script src="./js/resume_orderbtn.js"></script>
+
+    <!-- resume sh -->
+    <script src="./js/resume_sh.js"></script>
+
+    <!-- resume del -->
+    <script src="./js/resume_del.js"></script>
+
+    <!-- resume add -->
+    <script src="./js/resume_add.js"></script>
+
+    <script>
         // nav
         $('.left_toggler').click(function() {
             $('.left').fadeToggle();
@@ -113,120 +128,6 @@ include('./api/base.php');
 
         $('.user_toggler').click(function() {
             $('.user_nav').fadeToggle();
-        })
-
-        // resume sh
-        $(".sh_bg").click(function() {
-            if ($(this).css('justify-content') == 'start') {
-                console.log('123');
-                $(this).removeClass('sh_show');
-                $(this).children().removeClass('sh_btn_show');
-
-                let sh = 0;
-                let id = $(this).data('id');
-
-                $.post('./api/resume_sh.php', {
-                    id: id,
-                    sh: sh
-                }, () => {
-                    // location.reload();
-                })
-
-            } else {
-
-                $(this).addClass('sh_show');
-                $(this).children().addClass('sh_btn_show');
-
-                let sh = 1;
-                let id = $(this).data('id');
-
-                $.post('./api/resume_sh.php', {
-                    id: id,
-                    sh: sh
-                }, () => {
-                    // location.reload();
-                })
-            }
-        })
-
-        // resume orderbtn
-        $('.order_upbtn').click(function() {
-
-            if ($(this).parents('.form_item_group').prev().find('.order_btn').data('order') != undefined) {
-                // console.log('yes');
-                // console.log($(this).parents('.form_item_group').prev().find('.order_btn').data('order'));
-                // console.log($(this).parents('.form_item_group').prev().find('.order_btn').data('id'));
-
-                let pre_order = $(this).parents('.form_item_group').prev().find('.order_btn').data('order');
-                let pre_id = $(this).parents('.form_item_group').prev().find('.order_btn').data('id');
-
-                let order = $(this).parent().data('order');
-                let id = $(this).parent().data('id');
-
-                $.post('./api/resume_order.php', {
-                    id: id,
-                    order: order,
-                    pre_id: pre_id,
-                    pre_order: pre_order
-                }, () => {
-                    location.reload();
-                })
-            }
-        })
-
-        $('.order_bnbtn').click(function() {
-
-            if ($(this).parents('.form_item_group').next().find('.order_btn').data('order') != undefined) {
-
-                let pre_order = $(this).parents('.form_item_group').next().find('.order_btn').data('order');
-                let pre_id = $(this).parents('.form_item_group').next().find('.order_btn').data('id');
-
-                let order = $(this).parent().data('order');
-                let id = $(this).parent().data('id');
-
-                $.post('./api/resume_order.php', {
-                    id: id,
-                    order: order,
-                    pre_id: pre_id,
-                    pre_order: pre_order
-                }, () => {
-                    location.reload();
-                })
-            }
-
-        })
-
-
-        // resume del
-        $('.form_item_del').click(function() {
-            let id = $(this).data('id');
-
-            Swal.fire({
-                title: '確定要刪除嗎?',
-                text: "刪除後將無法復原此筆資料!",
-                icon: 'warning',
-                showCancelButton: true,
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
-                confirmButtonText: '確定刪除!',
-                cancelButtonText: '取消'
-            }).then((result) => {
-                if (result.isConfirmed) {
-
-                    $.post('./api/resume_del.php',{id:id},()=>{
-                        
-                        Swal.fire(
-                            '成功刪除',
-                            '你成功刪除了一筆資料',
-                            'success'
-                        )
-                            
-                        setTimeout(function(){location.reload()},2000);
-                    })
-                    
-
-                }
-            })
         })
     </script>
 </body>
