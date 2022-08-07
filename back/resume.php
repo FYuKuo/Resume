@@ -2,7 +2,7 @@
 $Resume = new DB('resume_resume');
 $rows = $Resume->all("ORDER BY `order_num`");
 ?>
-<div class="container right_content">
+<div class="right_content">
     <!-- 麵包屑 -->
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
@@ -15,7 +15,7 @@ $rows = $Resume->all("ORDER BY `order_num`");
         </ol>
     </nav>
 
-    <!-- 表單 -->
+    <!-- form -->
     <form action="./api/resume.php" method="post">
         <div class="form_group">
 
@@ -29,12 +29,61 @@ $rows = $Resume->all("ORDER BY `order_num`");
                     </div>
                 </div>
                 <div class="addBtn">
-                    <button type="button" class="btn btn-success">
+
+                    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#addModal">
                         新增
                     </button>
+
                 </div>
             </div>
 
+            <!-- modal -->
+            <div class="modal fade" id="addModal" tabindex="-1" aria-labelledby="addModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <!-- modal-header -->
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="addModalLabel">新增工作經驗</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <!-- modal-header end -->
+
+                        <form action="./api/resume_add.php" method="post">
+                            <!-- modal-body -->
+                            <div class="modal-body">
+                                <form>
+                                    <div class="form-group">
+                                        <label for="title" class="col-form-label">公司名稱&職稱</label>
+                                        <input type="text" class="form-control" id="title" name="title">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="during" class="col-form-label">任職期間</label>
+                                        <input type="text" class="form-control" id="during" name="during">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="text" class="col-form-label">文字描述</label>
+                                        <textarea class="form-control" id="text" name="text"></textarea>
+                                    </div>
+                                </form>
+                            </div>
+                            <!-- modal-body end -->
+                            
+                            <!-- modal-footer -->
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
+                                <button type="submit" class="btn btn-primary">確定新增</button>
+                            </div>
+                            <!-- modal-footer end -->
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+            <!-- modal end -->
+
+            <!-- data -->
             <div>
                 <?php
                 foreach ($rows as $key => $row) {
@@ -42,23 +91,24 @@ $rows = $Resume->all("ORDER BY `order_num`");
                     <div class="form_item_group">
 
                         <div class="form_item form_item_control">
-                            <div class="form_item_num">
-                                第<?= $key + 1 ?>筆資料
-                            </div>
+                            <span class="form_item_num">第<?= $key + 1 ?>筆資料</span>
 
                             <div class="form_item_btns">
-                                <div class="order_btn">
-                                    <button type="button" class="btn btn-outline-secondary ">上</button>
-                                    <button type="button" class="btn btn-outline-secondary ">下</button>
+                                <span class="form_item_smtitle">排序</span>
+                                <div class="order_btn" data-order="<?= $row['order_num'] ?>" data-id="<?= $row['id'] ?>">
+                                    <button type="button" class="btn btn-outline-primary order_upbtn">上</button>
+                                    <button type="button" class="btn btn-outline-primary order_bnbtn">下</button>
                                 </div>
 
                                 <div class="form_item_sh">
-                                    顯示&nbsp;&nbsp;&nbsp;
+                                    <span class="form_item_smtitle">顯示</span>
                                     <div class="sh_bg <?= ($row['sh'] == 1) ? 'sh_show' : '' ?>" data-id="<?= $row['id'] ?>">
                                         <div class="sh_btn <?= ($row['sh'] == 1) ? 'sh_btn_show' : '' ?>"></div>
                                     </div>
                                 </div>
-
+                                <div class="form_item_del" data-id="<?= $row['id'] ?>">
+                                    <i class="fa-solid fa-trash-can"></i>
+                                </div>
                             </div>
 
                         </div>
@@ -81,13 +131,17 @@ $rows = $Resume->all("ORDER BY `order_num`");
                 }
                 ?>
             </div>
+            <!-- data end -->
 
+            <!-- update btn -->
             <div class="form_item form_item_Btn">
                 <button type="submit" class="btn btn-primary">更新</button>
             </div>
+            <!-- update btn end -->
 
         </div>
     </form>
+    <!-- form end -->
 
     <footer>
         &copy; <?= date('Y') ?> FY

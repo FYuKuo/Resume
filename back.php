@@ -99,13 +99,13 @@ include('./api/base.php');
 
     </div>
 
-
-
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" referrerpolicy="no-referrer"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js" integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+" crossorigin="anonymous"></script>
 
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
     <script>
+
         // nav
         $('.left_toggler').click(function() {
             $('.left').fadeToggle();
@@ -115,7 +115,7 @@ include('./api/base.php');
             $('.user_nav').fadeToggle();
         })
 
-        // resume
+        // resume sh
         $(".sh_bg").click(function() {
             if ($(this).css('justify-content') == 'start') {
                 console.log('123');
@@ -125,22 +125,108 @@ include('./api/base.php');
                 let sh = 0;
                 let id = $(this).data('id');
 
-                $.post('./api/resume_sh.php',{id:id,sh:sh},()=>{
+                $.post('./api/resume_sh.php', {
+                    id: id,
+                    sh: sh
+                }, () => {
                     // location.reload();
                 })
-                
-            }else{
-                
+
+            } else {
+
                 $(this).addClass('sh_show');
-                $(this).children().addClass('sh_btn_show');           
-                
+                $(this).children().addClass('sh_btn_show');
+
                 let sh = 1;
                 let id = $(this).data('id');
 
-                $.post('./api/resume_sh.php',{id:id,sh:sh},()=>{
+                $.post('./api/resume_sh.php', {
+                    id: id,
+                    sh: sh
+                }, () => {
                     // location.reload();
                 })
             }
+        })
+
+        // resume orderbtn
+        $('.order_upbtn').click(function() {
+
+            if ($(this).parents('.form_item_group').prev().find('.order_btn').data('order') != undefined) {
+                // console.log('yes');
+                // console.log($(this).parents('.form_item_group').prev().find('.order_btn').data('order'));
+                // console.log($(this).parents('.form_item_group').prev().find('.order_btn').data('id'));
+
+                let pre_order = $(this).parents('.form_item_group').prev().find('.order_btn').data('order');
+                let pre_id = $(this).parents('.form_item_group').prev().find('.order_btn').data('id');
+
+                let order = $(this).parent().data('order');
+                let id = $(this).parent().data('id');
+
+                $.post('./api/resume_order.php', {
+                    id: id,
+                    order: order,
+                    pre_id: pre_id,
+                    pre_order: pre_order
+                }, () => {
+                    location.reload();
+                })
+            }
+        })
+
+        $('.order_bnbtn').click(function() {
+
+            if ($(this).parents('.form_item_group').next().find('.order_btn').data('order') != undefined) {
+
+                let pre_order = $(this).parents('.form_item_group').next().find('.order_btn').data('order');
+                let pre_id = $(this).parents('.form_item_group').next().find('.order_btn').data('id');
+
+                let order = $(this).parent().data('order');
+                let id = $(this).parent().data('id');
+
+                $.post('./api/resume_order.php', {
+                    id: id,
+                    order: order,
+                    pre_id: pre_id,
+                    pre_order: pre_order
+                }, () => {
+                    location.reload();
+                })
+            }
+
+        })
+
+
+        // resume del
+        $('.form_item_del').click(function() {
+            let id = $(this).data('id');
+
+            Swal.fire({
+                title: '確定要刪除嗎?',
+                text: "刪除後將無法復原此筆資料!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: '確定刪除!',
+                cancelButtonText: '取消'
+            }).then((result) => {
+                if (result.isConfirmed) {
+
+                    $.post('./api/resume_del.php',{id:id},()=>{
+                        
+                        Swal.fire(
+                            '成功刪除',
+                            '你成功刪除了一筆資料',
+                            'success'
+                        )
+                            
+                        setTimeout(function(){location.reload()},2000);
+                    })
+                    
+
+                }
+            })
         })
     </script>
 </body>

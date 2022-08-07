@@ -2,7 +2,7 @@
 $Introduce = new DB('resume_introduce');
 $text = $Introduce->find(1)['text'];
 ?>
-<div class="container right_content">
+<div class=" right_content">
 
     <!-- 麵包屑 -->
     <nav aria-label="breadcrumb">
@@ -20,11 +20,13 @@ $text = $Introduce->find(1)['text'];
     <form action="./api/introduce.php" method="post">
         <div class="form_group">
             <div class="form_item form_item_Title">
-                <div class="form_item_header">
-                    個人簡介管理
-                </div>
-                <div class="form_item_text">
-                    請輸入要更新的文字內容
+                <div class="d-flex flex-column justify-content-center">
+                    <div class="form_item_header">
+                        個人簡介管理
+                    </div>
+                    <div class="form_item_text">
+                        請輸入要更新的文字內容
+                    </div>
                 </div>
             </div>
             <div class="form_item">
@@ -39,5 +41,5 @@ $text = $Introduce->find(1)['text'];
 
 </div>
 <footer>
-    &copy; <?=date('Y')?> FY
+    &copy; <?= date('Y') ?> FY
 </footer>

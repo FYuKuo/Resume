@@ -84,6 +84,8 @@
 
 .right_content {
     height: calc(100% - 64px);
+    width: 96%;
+    margin: auto;
 }
 
 .right_content>h2,.right_content>h4 {
@@ -135,7 +137,28 @@ form {
 
 .form_item_text {
     color: grey;
-    margin: 5px 0;
+    margin-bottom: 5px;
+}
+
+.form_item_smtitle {
+    color: grey;
+    margin-right: 10px;
+}
+
+.form_item_del {
+    margin-left:25px;
+    color: gray;
+    cursor: pointer;
+    font-size: 18px;
+    transition: 0.3s;
+}
+
+.form_item_del:hover {
+    color: rgb(214, 37, 37);
+}
+
+.form_item_del:active {
+    color: rgb(175, 35, 35);
 }
 
 .form_item_Btn {
@@ -156,7 +179,9 @@ form {
 }
 
 .form_item_num {
-    width: fit-content;
+    color: rgb(41, 123, 211);
+    font-weight: 500;
+    letter-spacing: 2px;
 }
 
 .form_item_btns,.form_item_sh {

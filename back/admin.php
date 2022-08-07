@@ -2,7 +2,7 @@
 $Admin = new DB('resume_admin');
 $rows = $Admin->all();
 ?>
-<div class="container right_content">
+<div class=" right_content">
     <!-- 麵包屑 -->
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
@@ -19,11 +19,18 @@ $rows = $Admin->all();
     <form action="" method="post">
         <div class="form_group">
             <div class="form_item form_item_Title">
-                <div class="form_item_header">
-                    帳號管理
+                <div>
+                    <div class="form_item_header">
+                        帳號管理
+                    </div>
+                    <div class="form_item_text" style="margin: 0;">
+                        請輸入要更新的文字內容
+                    </div>
                 </div>
-                <div class="form_item_text">
-                    請輸入要更新的文字內容
+                <div class="addBtn">
+                    <button type="button" class="btn btn-success" id="addBtn">
+                        新增
+                    </button>
                 </div>
             </div>
             <div class="form_item">
