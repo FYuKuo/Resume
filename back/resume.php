@@ -63,7 +63,7 @@ $rows = $Resume->all("ORDER BY `order_num` DESC");
                                 </div>
                                 <div class="form-group">
                                     <label for="text" class="col-form-label">文字描述</label>
-                                    <textarea class="form-control" id="text"></textarea>
+                                    <textarea class="form-control" id="text" style="height: 250px;"></textarea>
                                 </div>
                             </form>
                         </div>

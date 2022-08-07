@@ -1,7 +1,19 @@
+.body {
+  width: 100%;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
 .myNav {
   /* height: 60px; */
   background-color: rgba(0, 0, 0, 0)!important;
   transition: 0.8s;
+  z-index: 100;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  right: 0;
+  left: 0;
 }
 
 .myNavScroll {
@@ -10,12 +22,12 @@
   
 }
 
-.myNavScroll a,.myNavScroll>button{
+.myNavScroll a,.myNavScroll>div>button{
   color: white!important;
   border-color: rgb(211, 211, 211)!important;
 }
 
-.myNavScroll>button>span {
+.myNavScroll>div>button>span {
   background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 30 30'%3e%3cpath stroke='white' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e")!important;
 }
 
@@ -50,7 +62,7 @@ left: 0;
 }
 
 .box_item {
-  height: 92vh;
+  min-height: 92vh;
   width: 100%;
 
 }
@@ -60,7 +72,7 @@ left: 0;
 
 }
 
-.introduce {
+.introduce,.Resume,.contact {
   display: flex;
   flex-wrap: wrap;
 
@@ -69,7 +81,7 @@ left: 0;
 .myTitle {
 align-self: start;
 text-align: center;
-padding: 30px 0;
+padding-top: 80px;
 }
 
 .myTitle>h2 {
@@ -97,4 +109,69 @@ background-color: rgb(232, 233, 235);
 
 .contact_text span {
   margin-right: 5px;
+}
+
+
+.resume_itme_group {
+  min-height: 480px;
+  
+}
+
+.resume_itme_group>h4 {
+  width: 90%;
+  margin: 10px auto;
+  
+}
+
+.resumt_items {
+  width: 90%;
+  margin: 0 auto;
+  margin-bottom: 20px;
+}
+
+.resumt_item_title {
+  color: rgb(32, 93, 161);
+  font-weight: 700;
+}
+
+.resumt_item {
+  margin: 5px 0;
+}
+
+pre {
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+footer {
+
+  padding: 20px 0;
+  text-align: center;
+  background-color: rgb(209, 209, 209);
+  color: white;
+
+}
+
+@media (max-width: 1000px) and (min-width:768px) {
+
+  .resume_itme_group>h4 {
+    width: 70%;
+  }
+  
+  .resumt_items {
+    width: 70%;
+  }
+
+}
+
+@media (max-width: 767px) {
+
+  .resume_itme_group>h4 {
+    width: 50%;
+  }
+  
+  .resumt_items {
+    width: 50%;
+  }
+
 }

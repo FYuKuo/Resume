@@ -129,6 +129,13 @@ include('./api/base.php');
         $('.user_toggler').click(function() {
             $('.user_nav').fadeToggle();
         })
+
+
+        // portfolio submit
+        // $('.form_group').on('click','#addAdminBtn',function(){
+        //     console.log($('#portfolioForm'));
+        //     $('#portfolioForm').submit();
+        // })
     </script>
 </body>
 

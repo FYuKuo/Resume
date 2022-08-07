@@ -21,24 +21,36 @@ $Contact = new DB('resume_contact');
 
 <body>
   <!-- nav -->
-  <nav class="navbar navbar-expand-lg navbar-light bg-light px-lg-5 py-2 fixed-top myNav">
-    <a class="navbar-brand myLogo" href="#">FY's Resume</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
+  <nav class="navbar navbar-expand-sm navbar-light bg-light py-2 fixed-top myNav">
+    <div class="container-fluid">
 
-    <div class="collapse navbar-collapse justify-content-end" id="navbarTogglerDemo02">
-      <ul class="navbar-nav mt-2 mt-lg-0 ">
-        <li class="nav-item active">
-          <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Link</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link">Disabled</a>
-        </li>
-      </ul>
+      <a class="navbar-brand myLogo" href="#">FY's Resume</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse justify-content-end" id="navbarTogglerDemo02">
+        <ul class="navbar-nav mt-2 mt-lg-0 ">
+          <li class="nav-item active">
+            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#introduce">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#skill">Skills</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#Resume">Resume</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#Portfolio">Portfolio</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#contact">Contact</a>
+          </li>
+        </ul>
+      </div>
     </div>
   </nav>
   <!-- nav end -->
@@ -55,7 +67,7 @@ $Contact = new DB('resume_contact');
   <!-- banner end -->
 
   <!-- introduce-->
-  <div class="introduce box_item">
+  <div class="introduce box_item" id="introduce">
     <div class="container myTitle">
       <h2>
         About
@@ -81,7 +93,7 @@ $Contact = new DB('resume_contact');
   <!-- introduce end -->
 
   <!-- skill -->
-  <div class="skill box_item">
+  <div class="skill box_item" id="skill">
     <div class="container myTitle">
       <h2>
         Skills
@@ -92,18 +104,69 @@ $Contact = new DB('resume_contact');
   <!-- introduce end -->
 
   <!-- Resume -->
-  <div class="Resume box_item">
+  <div class="Resume box_item justify-content-center" id="Resume">
     <div class="container myTitle">
       <h2>
         Resume
       </h2>
+    </div>
+    <div class="row d-flex justify-content-center container-fluid">
+
+
+      <div class="resume_itme_group col-lg-4 col-md-5 col-sm-10 mx-4 my-4 text-left">
+        <h4>學習歷程</h4>
+        <?php
+        $Edu = new DB('resume_education');
+        $edus = $Edu->all(['sh'=>1],"ORDER BY `order_num` DESC");
+        foreach ($edus as $key => $edu) {
+        ?>
+          <div class="resumt_items">
+            <div class="resumt_item_title  resumt_item">
+              <?= $edu['title'] ?>
+            </div>
+            <div class="resumt_item_during  resumt_item">
+              <?= $edu['during'] ?>
+            </div>
+            <div class=" resume_itme_text resumt_item">
+              <pre><?= $edu['text'] ?></pre>
+            </div>
+
+          </div>
+        <?php
+        }
+        ?>
+      </div>
+
+      <div class="resume_itme_group col-lg-4 col-md-5 col-sm-10 mx-4 my-4 text-left">
+        <h4>工作經歷</h4>
+        <?php
+        $Resume = new DB('resume_resume');
+        $resumes = $Resume->all(['sh'=>1],"ORDER BY `order_num` DESC");
+        foreach ($resumes as $key => $resume) {
+        ?>
+          <div class="resumt_items">
+
+            <div class="resumt_item_title resumt_item">
+              <?= $resume['title'] ?>
+            </div>
+            <div class="resumt_item_during resumt_item">
+              <?= $resume['during'] ?>
+            </div>
+            <div class=" resume_itme_text resumt_item">
+              <pre><?= $resume['text'] ?></pre>
+            </div>
+          </div>
+        <?php
+        }
+        ?>
+      </div>
 
     </div>
   </div>
   <!-- Resume end -->
 
   <!-- Portfolio -->
-  <div class="Portfolio box_item">
+  <div class="Portfolio box_item" id="Portfolio">
     <div class="container myTitle">
       <h2>
         Portfolio
@@ -114,32 +177,35 @@ $Contact = new DB('resume_contact');
   <!-- Portfolio end -->
 
   <!-- contact -->
-  <div class="contact box_item">
+  <div class="contact box_item" id="contact">
     <div class="container myTitle">
       <h2>
         Contact
       </h2>
+    </div>
+    <div class="container">
+      <!-- <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3639.6936687803554!2d120.60035871499973!3d24.1824737780497!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x34693e1c3a406707%3A0xd43d01bc4fb2806a!2z5p2x5rW35aSn5a24!5e0!3m2!1szh-TW!2stw!4v1659794091107!5m2!1szh-TW!2stw" width="360" height="270" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe> -->
 
-      <div class="container">
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3639.6936687803554!2d120.60035871499973!3d24.1824737780497!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x34693e1c3a406707%3A0xd43d01bc4fb2806a!2z5p2x5rW35aSn5a24!5e0!3m2!1szh-TW!2stw!4v1659794091107!5m2!1szh-TW!2stw" width="360" height="270" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-
-        <div class="contact_text">
-          <p>
-            <span><i class="fa-solid fa-location-dot"></i></span> <?= $Contact->find(1)['address'] ?>
-          </p>
-          <p>
-            <span><i class="fa-solid fa-mobile-screen-button"></i></span> <?= $Contact->find(1)['tel'] ?>
-          </p>
-          <p>
-            <span><i class="fa-solid fa-envelope"></i> </span><?= $Contact->find(1)['email'] ?>
-          </p>
-        </div>
-
-
+      <div class="contact_text">
+        <p>
+          <span><i class="fa-solid fa-location-dot"></i></span> <?= $Contact->find(1)['address'] ?>
+        </p>
+        <p>
+          <span><i class="fa-solid fa-mobile-screen-button"></i></span> <?= $Contact->find(1)['tel'] ?>
+        </p>
+        <p>
+          <span><i class="fa-solid fa-envelope"></i> </span><?= $Contact->find(1)['email'] ?>
+        </p>
       </div>
+
+
     </div>
   </div>
   <!-- contact end -->
+
+  <footer>
+    &copy; <?= date('Y') ?> FY
+  </footer>
 
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" referrerpolicy="no-referrer"></script>
@@ -154,12 +220,18 @@ $Contact = new DB('resume_contact');
 
       if ($(document).scrollTop() > 150) {
         $('.myNav').addClass('myNavScroll');
+        $('.myNav').addClass('shadow');
       } else {
         $('.myNav').removeClass('myNavScroll')
+        $('.myNav').removeClass('shadow')
       }
 
     })
 
+    if ($(document).scrollTop() > 150) {
+      $('.myNav').addClass('myNavScroll');
+      $('.myNav').addClass('shadow');
+    }
 
   })
 </script>

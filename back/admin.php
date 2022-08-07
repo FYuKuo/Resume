@@ -28,7 +28,7 @@ $rows = $Admin->all();
                     </div>
                 </div>
                 <div class="addBtn">
-                    <button type="button" class="btn btn-success" id="addBtn">
+                    <button type="button" class="btn btn-success">
                         新增
                     </button>
                 </div>
