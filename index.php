@@ -24,7 +24,7 @@ $Contact = new DB('resume_contact');
   <nav class="navbar navbar-expand-sm navbar-light bg-light py-2 fixed-top myNav">
     <div class="container-fluid">
 
-      <a class="navbar-brand myLogo" href="#">FY's Resume</a>
+      <a class="navbar-brand myLogo" href="./index.php">FY's Resume</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -117,17 +117,17 @@ $Contact = new DB('resume_contact');
         <h4>學習歷程</h4>
         <?php
         $Edu = new DB('resume_education');
-        $edus = $Edu->all(['sh'=>1],"ORDER BY `order_num` DESC");
+        $edus = $Edu->all(['sh' => 1], "ORDER BY `order_num` DESC");
         foreach ($edus as $key => $edu) {
         ?>
-          <div class="resumt_items">
-            <div class="resumt_item_title  resumt_item">
+          <div class="resume_items">
+            <div class="resume_item_title  resume_item">
               <?= $edu['title'] ?>
             </div>
-            <div class="resumt_item_during  resumt_item">
+            <div class="resume_item_during  resume_item">
               <?= $edu['during'] ?>
             </div>
-            <div class=" resume_itme_text resumt_item">
+            <div class=" resume_itme_text resume_item">
               <pre><?= $edu['text'] ?></pre>
             </div>
 
@@ -141,18 +141,18 @@ $Contact = new DB('resume_contact');
         <h4>工作經歷</h4>
         <?php
         $Resume = new DB('resume_resume');
-        $resumes = $Resume->all(['sh'=>1],"ORDER BY `order_num` DESC");
+        $resumes = $Resume->all(['sh' => 1], "ORDER BY `order_num` DESC");
         foreach ($resumes as $key => $resume) {
         ?>
-          <div class="resumt_items">
+          <div class="resume_items">
 
-            <div class="resumt_item_title resumt_item">
+            <div class="resume_item_title resume_item">
               <?= $resume['title'] ?>
             </div>
-            <div class="resumt_item_during resumt_item">
+            <div class="resume_item_during resume_item">
               <?= $resume['during'] ?>
             </div>
-            <div class=" resume_itme_text resumt_item">
+            <div class=" resume_itme_text resume_item">
               <pre><?= $resume['text'] ?></pre>
             </div>
           </div>
@@ -171,7 +171,15 @@ $Contact = new DB('resume_contact');
       <h2>
         Portfolio
       </h2>
+      <div class="row Portfolio_Btns d-flex justify-content-center align-items-center my-4">
+        <button type="button" class="btn btn-outline-primary mx-3 Portfolio_Btn_item" onclick="Portfolio('1')">前端</button>
+        <button type="button" class="btn btn-outline-primary mx-3 Portfolio_Btn_item" onclick="Portfolio('2')">後端</button>
+        <button type="button" class="btn btn-outline-primary mx-3 Portfolio_Btn_item" onclick="Portfolio('3')">設計</button>
+        <button type="button" class="btn btn-outline-primary mx-3 Portfolio_Btn_item" onclick="Portfolio('4')">其他</button>
+      </div>
+      <div class="row d-flex align-items-center Portfolio_items mt-4 justify-content-lg-between justify-content-md-center justify-content-sm-center">
 
+      </div>
     </div>
   </div>
   <!-- Portfolio end -->
@@ -233,7 +241,69 @@ $Contact = new DB('resume_contact');
       $('.myNav').addClass('shadow');
     }
 
+    // Portfolio hover
+    $('.Portfolio_items').on('mouseenter','.Portfolio_item_img>img',function() {
+
+      $(this).next().addClass('Portfolio_item_fly_show');
+
+    })
+    
+    $('.Portfolio_items').on('mouseleave','.Portfolio_item_fly',function() {
+      $(this).removeClass('Portfolio_item_fly_show');
+    })
+
+    Portfolio(2)
   })
+
+
+
+  // Portfolio_Btn_item click
+  function Portfolio(type) {
+    $('.Portfolio_items').children().remove();
+
+    $.get('./api/portfolio_show.php', {
+      type
+    }, (res) => {
+
+      res = JSON.parse(res);
+
+      let addhtml = '';
+
+      for (let i = 0; i < res.length; i++) {
+        
+        addhtml = addhtml + `<!-- Portfolio img  -->
+          <div class="Portfolio_item col-auto my-4 mx-2">
+            <div class="Portfolio_item_img">
+              <img src="./img/${res[i].img}" alt="">
+
+              <!-- Portfolio text btn  -->
+              <div class="Portfolio_item_fly">
+
+                <div class=" Portfolio_itme_text">
+                ${res[i].text}
+                </div>
+                <div class=" Portfolio_itme_Btn">
+                  <a href="${res[i].href}">
+                    <button class="btn btn-primary" type="button">查看</button>
+                  </a>
+                </div>
+              </div>
+              <!-- Portfolio text btn end  -->
+            </div>
+
+            <div class="Portfolio_item_title text-left">
+            ${res[i].title}
+            </div>
+          </div>
+
+          <!-- Portfolio img end -->`
+        
+      }
+      
+
+      $('.Portfolio_items').append(addhtml);
+    })
+  }
 </script>
 
 </html>

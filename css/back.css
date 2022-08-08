@@ -217,13 +217,19 @@ form {
 
 }
 
+.form_item_img_btn form {
+    margin: 0;
+}
+
 .form_item_img_btn_show {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: rgba(0, 0, 0, 0.2);
     transition: 0.8s;
 }
+
+.form_item_img_btn_show:hover {
+    background-color: rgba(51, 51, 51, 0.5);
+}
+
 
 .form_item_btns,.form_item_sh {
     display: flex;

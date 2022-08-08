@@ -39,7 +39,7 @@ include('./api/base.php');
                 <div class="user_nav">
                     <ul class="navbar-nav mt-2 mt-lg-0 ">
                         <li class="nav-item">
-                            <a class="nav-link" href="./index.html">
+                            <a class="nav-link" href="./index.php">
                                 前台
                             </a>
                         </li>
