@@ -177,9 +177,9 @@ $Contact = new DB('resume_contact');
         <button type="button" class="btn btn-outline-primary mx-3 Portfolio_Btn_item" onclick="Portfolio('3')">設計</button>
         <button type="button" class="btn btn-outline-primary mx-3 Portfolio_Btn_item" onclick="Portfolio('4')">其他</button>
       </div>
-      <div class="row d-flex align-items-center Portfolio_items mt-4 justify-content-lg-between justify-content-md-center justify-content-sm-center">
+    </div>
+    <div class="Portfolio_items container">
 
-      </div>
     </div>
   </div>
   <!-- Portfolio end -->
@@ -191,8 +191,12 @@ $Contact = new DB('resume_contact');
         Contact
       </h2>
     </div>
-    <div class="container">
-      <!-- <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3639.6936687803554!2d120.60035871499973!3d24.1824737780497!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x34693e1c3a406707%3A0xd43d01bc4fb2806a!2z5p2x5rW35aSn5a24!5e0!3m2!1szh-TW!2stw!4v1659794091107!5m2!1szh-TW!2stw" width="360" height="270" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe> -->
+    <div class="container contact_items">
+
+
+      <div class="contact_text">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3639.6936687803554!2d120.60035871499973!3d24.1824737780497!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x34693e1c3a406707%3A0xd43d01bc4fb2806a!2z5p2x5rW35aSn5a24!5e0!3m2!1szh-TW!2stw!4v1659794091107!5m2!1szh-TW!2stw" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
 
       <div class="contact_text">
         <p>
@@ -242,13 +246,13 @@ $Contact = new DB('resume_contact');
     }
 
     // Portfolio hover
-    $('.Portfolio_items').on('mouseenter','.Portfolio_item_img>img',function() {
+    $('.Portfolio_items').on('mouseenter', '.Portfolio_item_img>img', function() {
 
       $(this).next().addClass('Portfolio_item_fly_show');
 
     })
-    
-    $('.Portfolio_items').on('mouseleave','.Portfolio_item_fly',function() {
+
+    $('.Portfolio_items').on('mouseleave', '.Portfolio_item_fly', function() {
       $(this).removeClass('Portfolio_item_fly_show');
     })
 
@@ -270,13 +274,12 @@ $Contact = new DB('resume_contact');
       let addhtml = '';
 
       for (let i = 0; i < res.length; i++) {
-        
-        addhtml = addhtml + `<!-- Portfolio img  -->
-          <div class="Portfolio_item col-auto my-4 mx-2">
+
+        addhtml = addhtml + `
+          <div class="Portfolio_item ">
             <div class="Portfolio_item_img">
               <img src="./img/${res[i].img}" alt="">
 
-              <!-- Portfolio text btn  -->
               <div class="Portfolio_item_fly">
 
                 <div class=" Portfolio_itme_text">
@@ -288,18 +291,15 @@ $Contact = new DB('resume_contact');
                   </a>
                 </div>
               </div>
-              <!-- Portfolio text btn end  -->
             </div>
 
             <div class="Portfolio_item_title text-left">
             ${res[i].title}
             </div>
-          </div>
+          </div>`
 
-          <!-- Portfolio img end -->`
-        
       }
-      
+
 
       $('.Portfolio_items').append(addhtml);
     })
