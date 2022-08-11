@@ -1,6 +1,10 @@
 <?php
 $do = $_GET['do'] ?? 'main';
 include('./api/base.php');
+if(empty($_SESSION['user'])){
+    to('./index.php');
+    exit();
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -44,7 +48,7 @@ include('./api/base.php');
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">
+                            <a class="nav-link" href="./api/logout.php">
                                 登出
                             </a>
                         </li>

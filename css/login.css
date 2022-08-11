@@ -24,3 +24,24 @@ h1{
     font-size: 22px;
     font-weight: bold;
 }
+
+.forgot>a {
+    color: gray;
+    text-decoration: none;
+}
+
+.forgot>a:hover {
+    color: rgb(255, 255, 255);
+}
+
+.forgot>a:active {
+    color: rgb(172, 62, 62);
+}
+
+.errorshow {
+    background-color: rgb(255, 186, 186);
+    color: white;
+    padding: 15px;
+    border-radius: 5px;
+    font-weight: bold;
+}

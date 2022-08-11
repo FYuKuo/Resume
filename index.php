@@ -49,6 +49,9 @@ $Contact = new DB('resume_contact');
           <li class="nav-item">
             <a class="nav-link" href="#contact">Contact</a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link" href="./back/login.php">Back</a>
+          </li>
         </ul>
       </div>
     </div>
