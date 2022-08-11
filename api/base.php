@@ -4,15 +4,15 @@ session_start();
 class DB
 {
     public $table;
-    protected $dsn = "mysql:host=localhost;charset=utf8;dbname=s1110215";
-    // protected $dsn = "mysql:host=localhost;charset=utf8;dbname=resume";
+    // protected $dsn = "mysql:host=localhost;charset=utf8;dbname=s1110215";
+    protected $dsn = "mysql:host=localhost;charset=utf8;dbname=resume";
     protected $pdo;
 
     public function __construct($table)
     {
         $this->table = $table;
-        $this->pdo = new PDO($this->dsn,'s1110215','s1110215');
-        // $this->pdo = new PDO($this->dsn,'root','');
+        // $this->pdo = new PDO($this->dsn,'s1110215','s1110215');
+        $this->pdo = new PDO($this->dsn,'root','');
     }
 
     public function all(...$arg)

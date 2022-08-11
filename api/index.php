@@ -1,3 +1,3 @@
 <?php
-header("../index.php");
+header("location:../index.php");
 ?>
