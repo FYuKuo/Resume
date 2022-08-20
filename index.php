@@ -12,7 +12,7 @@ $Contact = new DB('resume_contact');
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>FY's Resume</title>
+  <title>FangYu's Resume</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
 
@@ -24,7 +24,7 @@ $Contact = new DB('resume_contact');
   <nav class="navbar navbar-expand-sm navbar-light bg-light py-2 fixed-top myNav">
     <div class="container-fluid">
 
-      <a class="navbar-brand myLogo" href="./index.php">FY's Resume</a>
+      <a class="navbar-brand myLogo" href="./index.php">FangYu's Resume</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -49,9 +49,21 @@ $Contact = new DB('resume_contact');
           <li class="nav-item">
             <a class="nav-link" href="#contact">Contact</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="./back/login.php">Back</a>
-          </li>
+          <?php
+          if(isset($_SESSION['user'])){
+          ?>
+            <li class="nav-item">
+              <a class="nav-link" href="./back.php">Back</a>
+            </li>
+            <?php
+          }else{
+            ?>
+            <li class="nav-item">
+              <a class="nav-link" href="./back/login.php">Login</a>
+            </li>
+          <?php
+          }
+          ?>
         </ul>
       </div>
     </div>
@@ -62,7 +74,7 @@ $Contact = new DB('resume_contact');
   <div class="banner">
 
     <div class="container bannerText">
-      <h1 class="display-4">Hi I'm FY Kuo.</h1>
+      <h1 class="display-4">Hi I'm FangYu Kuo.</h1>
       <p class="lead">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p>
     </div>
 
@@ -176,7 +188,7 @@ $Contact = new DB('resume_contact');
       </h2>
       <div class="row Portfolio_Btns d-flex justify-content-center align-items-center my-4">
         <button type="button" class="btn btn-outline-primary mx-3 Portfolio_Btn_item" onclick="Portfolio('1')">前端</button>
-        <button type="button" class="btn btn-outline-primary mx-3 Portfolio_Btn_item" onclick="Portfolio('2')">後端</button>
+        <button type="button" class="btn btn-outline-primary mx-3 Portfolio_Btn_item active" onclick="Portfolio('2')">後端</button>
         <button type="button" class="btn btn-outline-primary mx-3 Portfolio_Btn_item" onclick="Portfolio('3')">設計</button>
         <button type="button" class="btn btn-outline-primary mx-3 Portfolio_Btn_item" onclick="Portfolio('4')">其他</button>
       </div>
@@ -219,7 +231,7 @@ $Contact = new DB('resume_contact');
   <!-- contact end -->
 
   <footer>
-    &copy; <?= date('Y') ?> FY
+    &copy; <?= date('Y') ?> FangYu Kuo
   </footer>
 
 
@@ -268,6 +280,7 @@ $Contact = new DB('resume_contact');
   function Portfolio(type) {
     $('.Portfolio_items').children().remove();
 
+
     $.get('./api/portfolio_show.php', {
       type
     }, (res) => {
@@ -289,7 +302,7 @@ $Contact = new DB('resume_contact');
                 ${res[i].text}
                 </div>
                 <div class=" Portfolio_itme_Btn">
-                  <a href="${res[i].href}">
+                  <a href="${res[i].href}" target="_blank">
                     <button class="btn btn-primary" type="button">查看</button>
                   </a>
                 </div>
@@ -307,6 +320,11 @@ $Contact = new DB('resume_contact');
       $('.Portfolio_items').append(addhtml);
     })
   }
+
+  $('.Portfolio_Btn_item').on('click',function(){
+    $('.Portfolio_Btn_item').removeClass('active');
+    $(this).addClass('active');
+  })
 </script>
 
 </html>

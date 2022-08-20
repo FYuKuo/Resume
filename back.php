@@ -13,7 +13,7 @@ if(empty($_SESSION['user'])){
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>後台管理｜FY's Resume</title>
+    <title>後台管理｜FangYu's Resume</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
 
@@ -88,6 +88,9 @@ if(empty($_SESSION['user'])){
             </a>
             <a href="?do=logo" class=" left_item <?=($do == 'logo')?'left_item_active':''?>">
                 <span><i class="fa-solid fa-palette"></i></span> Logo管理
+            </a>
+            <a href="?do=message" class=" left_item <?=($do == 'message')?'left_item_active':''?>">
+                <span><i class="fa-solid fa-user"></i></span> 訊息管理
             </a>
             <a href="?do=admin" class=" left_item <?=($do == 'admin')?'left_item_active':''?>">
                 <span><i class="fa-solid fa-user"></i></span> 帳號管理

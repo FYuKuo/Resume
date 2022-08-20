@@ -44,11 +44,15 @@
     top: 60px;
     width: 270px;
     background-color: rgb(59, 75, 92);
-    overflow: hidden;
+    overflow-y: auto;
     left: 0;
     bottom: 0;
     z-index: 1;
 
+}
+
+.left::-webkit-scrollbar {
+    display: none;
 }
 
 .right {
