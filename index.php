@@ -50,14 +50,14 @@ $Contact = new DB('resume_contact');
             <a class="nav-link" href="#contact">Contact</a>
           </li>
           <?php
-          if(isset($_SESSION['user'])){
+          if (isset($_SESSION['user'])) {
           ?>
             <li class="nav-item">
               <a class="nav-link" href="./back.php">Back</a>
             </li>
-            <?php
-          }else{
-            ?>
+          <?php
+          } else {
+          ?>
             <li class="nav-item">
               <a class="nav-link" href="./back/login.php">Login</a>
             </li>
@@ -227,6 +227,32 @@ $Contact = new DB('resume_contact');
 
 
     </div>
+
+    <div class="contact_form_group">
+
+      <div class="form-group">
+        <label for="email">Email address</label>
+        <input type="email" class="form-control" id="email" placeholder="name@example.com">
+      </div>
+      <div class="form-group">
+        <label for="tel">Tel</label>
+        <input type="text" class="form-control" id="tel" placeholder="0912-345-678">
+      </div>
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" class="form-control" id="name" >
+      </div>
+      <div class="form-group">
+        <label for="title">Subject</label>
+        <input type="text" class="form-control" id="title" >
+      </div>
+
+      <div class="form-group">
+        <label for="text">Message</label>
+        <textarea class="form-control" id="text" rows="3"></textarea>
+      </div>
+      <button type="button" class="btn btn-primary myContactBtn">Submit</button>
+    </div>
   </div>
   <!-- contact end -->
 
@@ -238,6 +264,9 @@ $Contact = new DB('resume_contact');
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" referrerpolicy="no-referrer"></script>
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js" integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+" crossorigin="anonymous"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+  
 </body>
 
 <script>
@@ -321,9 +350,43 @@ $Contact = new DB('resume_contact');
     })
   }
 
-  $('.Portfolio_Btn_item').on('click',function(){
+  $('.Portfolio_Btn_item').on('click', function() {
     $('.Portfolio_Btn_item').removeClass('active');
     $(this).addClass('active');
+  })
+
+
+  $('.myContactBtn').on('click',function(){
+    let email = $('#email').val();
+    let name = $('#name').val();
+    let title = $('#title').val();
+    let text = $('#text').val();
+    let tel = $('#tel').val();
+
+    if(email == '' || name == '' || title == '' || text == '' || tel == ''){
+          Swal.fire({
+              icon: 'error',
+              title: '新增失敗',
+              text: '資料尚未填寫完畢!',
+          })
+
+    }else{
+      $.post('./api/save_message.php',{email,name,title,text,tel},()=>{
+          Swal.fire({
+              icon: 'success',
+              title: '送出成功',
+              text: '成功送出一筆資料!',
+          }).then((result) => {
+              if (result.isConfirmed) {
+                let email = $('#email').val('');
+                let name = $('#name').val('');
+                let title = $('#title').val('');
+                let text = $('#text').val('');
+                let tel = $('#tel').val('');
+              }
+          })
+      })
+    }
   })
 </script>
 

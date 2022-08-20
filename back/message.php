@@ -24,14 +24,10 @@ $rows = $Admin->all();
                     訊息管理
                     </div>
                     <div class="form_item_text" style="margin: 0;">
-                        請輸入要更新的文字內容
+                        請選擇欲更新的項目
                     </div>
                 </div>
-                <div class="addBtn">
-                    <button type="button" class="btn btn-success">
-                        新增
-                    </button>
-                </div>
+
             </div>
             <div class="form_item">
 

@@ -238,6 +238,17 @@ background-color: rgb(232, 233, 235);
   height: 300px;
 }
 
+.contact_form_group {
+  width: 60%;
+  margin: auto;
+  background-color: rgb(241, 241, 241);
+  border-radius: 7px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.205);
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+
 pre {
   white-space: pre-wrap;
   word-wrap: break-word;
@@ -252,12 +263,14 @@ footer {
 
 }
 
-/* @media (max-width: 1000px) and (min-width:768px) {
-
+@media (max-width: 1000px) {
+  .contact_form_group {
+    width: 70%;
+  }
 
   
 
-} */
+}
 
 @media (max-width: 767px) {
 
