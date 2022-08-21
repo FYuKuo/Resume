@@ -38,7 +38,8 @@ body {
 }
 
 .banner {
-background: url('../img/CMPV2468.JPG') no-repeat ;
+
+background-repeat: no-repeat ;
 background-size: cover;
 background-position: bottom right;
 height: 100vh;
@@ -146,6 +147,16 @@ background-color: rgb(232, 233, 235);
 .resume_item_title {
   color: rgb(32, 93, 161);
   font-weight: 700;
+  font-size: 18px;
+}
+
+.resume_item_during {
+  background-color: rgb(115, 135, 158);
+  color: white;
+  padding: 4px 8px;
+  width: fit-content;
+  border-radius: 5px;
+  font-size: 14px;
 }
 
 .resume_item {
@@ -219,33 +230,37 @@ background-color: rgb(232, 233, 235);
   margin: 20px 0;
 }
 
-.contact_items {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-row-gap: 38px;
-  grid-column-gap: 60px;
-  justify-items: center;
+.contact_text_item {
   align-items: center;
 }
 
-.contact_text {
-  padding: 40px 0;
+.contact_text_icon {
+  background-color: rgb(88, 109, 133);
+  color: white;
+  font-size: 18px;
+  width: 50px;
+  height: 50px;
+  line-height: 50px;
+  border-radius: 50%;
+  text-align: center;
+  margin-right:20px;
 }
 
+.contact_text_title {
+  font-size: 24px;
+}
 
-.contact_text > iframe {
-  width: 100%;
-  height: 300px;
+.contact_text_p {
+  color: rgb(44, 44, 44);
 }
 
 .contact_form_group {
-  width: 60%;
-  margin: auto;
-  background-color: rgb(241, 241, 241);
-  border-radius: 7px;
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.205);
-  padding: 20px;
-  margin-bottom: 20px;
+  width: 100%;
+}
+
+.contact_map iframe {
+  width: 100%;
+  height: 300px;
 }
 
 
@@ -263,14 +278,12 @@ footer {
 
 }
 
-@media (max-width: 1000px) {
-  .contact_form_group {
-    width: 70%;
-  }
+/* @media (max-width: 1000px) {
+
 
   
 
-}
+} */
 
 @media (max-width: 767px) {
 
@@ -288,8 +301,5 @@ footer {
     background-color: rgba(14, 14, 14, 0.705);
   }
 
-  .contact_items {
-    grid-template-columns: 1fr;
-  }
 
 }

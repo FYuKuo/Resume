@@ -89,7 +89,7 @@ class DB
             // 更新
             foreach ($array as $key => $value) {
                 if($key != 'id'){
-                    $tmp[] = "`$key` = '$value'";
+                    $tmp[] = "`$key` = \"$value\"";
                 }
             }
 
@@ -101,8 +101,10 @@ class DB
             $col = join("`,`",array_keys($array));
             $val = join("','",$array);
 
-            $sql = "INSERT INTO `$this->table` (`$col`) VALUES ('$val')";
+            $sql = "INSERT INTO `$this->table` (`$col`) VALUES (\"$val\")";
         }
+
+        // echo $sql;
 
         return $this->pdo->exec($sql);
     }
