@@ -99,12 +99,12 @@ class DB
             // 新增
 
             $col = join("`,`",array_keys($array));
-            $val = join("','",$array);
+            $val = join("\",\"",$array);
 
             $sql = "INSERT INTO `$this->table` (`$col`) VALUES (\"$val\")";
         }
 
-        // echo $sql;
+        echo $sql;
 
         return $this->pdo->exec($sql);
     }

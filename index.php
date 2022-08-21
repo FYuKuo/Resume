@@ -274,9 +274,10 @@ $Banner = new DB('resume_banner');
 
                     <div class="row">
                         <div class="form-group col-6">
-                            <label for="email">Email</label>
-                            <input type="email" class="form-control" id="email" placeholder="Your Email">
+                            <label for="name">Name</label>
+                            <input type="text" class="form-control" id="name" placeholder="Your Name">
                         </div>
+
                         <div class="form-group col-6">
                             <label for="tel">Tel</label>
                             <input type="text" class="form-control" id="tel" placeholder="Your Phone Number">
@@ -290,9 +291,10 @@ $Banner = new DB('resume_banner');
                             <input type="text" class="form-control" id="title" placeholder="Subject">
                         </div>
                         <div class="form-group col-6">
-                            <label for="name">Name</label>
-                            <input type="text" class="form-control" id="name" placeholder="Your Name">
+                            <label for="email">Email</label>
+                            <input type="email" class="form-control" id="email" placeholder="Your Email">
                         </div>
+
 
                     </div>
 
@@ -370,6 +372,45 @@ $(document).ready(function() {
     })
 
     Portfolio(2)
+
+    // myContactBtn click
+$('.myContactBtn').on('click', function() {
+    let email = $('#email').val();
+    let name = $('#name').val();
+    let title = $('#title').val();
+    let text = $('#text').val();
+    let tel = $('#tel').val();
+
+   
+    if (email == '' || name == '' || title == '' || text == '' || tel == '') {
+        Swal.fire({
+            icon: 'error',
+            title: '新增失敗',
+            text: '資料尚未填寫完畢!',
+        })
+
+    } else {
+
+
+        $.post('./api/save_message.php', {email,name,title,text,tel}, (res) => {
+            Swal.fire({
+                icon: 'success',
+                title: '送出成功',
+                text: '成功送出一筆資料!',
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    let email = $('#email').val('');
+                    let name = $('#name').val('');
+                    let title = $('#title').val('');
+                    let text = $('#text').val('');
+                    let tel = $('#tel').val('');
+                }
+            })
+
+            // console.log(res);
+        })
+    }
+})
 })
 
 
@@ -424,45 +465,7 @@ $('.Portfolio_Btn_item').on('click', function() {
     $(this).addClass('active');
 })
 
-// myContactBtn click
-$('.myContactBtn').on('click', function() {
-    let email = $('#email').val();
-    let name = $('#name').val();
-    let title = $('#title').val();
-    let text = $('#text').val();
-    let tel = $('#tel').val();
 
-    if (email == '' || name == '' || title == '' || text == '' || tel == '') {
-        Swal.fire({
-            icon: 'error',
-            title: '新增失敗',
-            text: '資料尚未填寫完畢!',
-        })
-
-    } else {
-        $.post('./api/save_message.php', {
-            email,
-            name,
-            title,
-            text,
-            tel
-        }, () => {
-            Swal.fire({
-                icon: 'success',
-                title: '送出成功',
-                text: '成功送出一筆資料!',
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    let email = $('#email').val('');
-                    let name = $('#name').val('');
-                    let title = $('#title').val('');
-                    let text = $('#text').val('');
-                    let tel = $('#tel').val('');
-                }
-            })
-        })
-    }
-})
 </script>
 
 </html>

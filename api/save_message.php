@@ -10,6 +10,7 @@ $data['name'] = $_POST['name'];
 $data['title'] = $_POST['title'];
 $data['message'] = $_POST['text'];
 
-$Message->save($data);
+// dd($data);
+echo $Message->save($data);
 
 ?>

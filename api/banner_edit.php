@@ -2,6 +2,7 @@
 include('./base.php');
 $Banner = new DB('resume_banner');
 $data = $Banner->find(1);
+// dd($_FILES['img']);
 
 if($_FILES['img']['error'] == 0 && isset($_FILES['img']['tmp_name'])) {
     unlink('../img/'.$data['img']);
@@ -18,7 +19,7 @@ if($_FILES['img']['error'] == 0 && isset($_FILES['img']['tmp_name'])) {
 $data['title'] = $_POST['title'];
 $data['text'] = $_POST['text'];
 
-dd($data);
+// dd($data);
 $Banner->save($data);
 
 to('../back.php?do=banner');

@@ -136,6 +136,9 @@ if(empty($_SESSION['user'])){
     <!-- resume add -->
     <script src="./js/resume_add.js"></script>
 
+    <!-- admin add -->
+    <script src="./js/admin_add.js"></script>
+
     <script>
     // nav
     $('.left_toggler').click(function() {
