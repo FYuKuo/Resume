@@ -3,6 +3,7 @@ include('./api/base.php');
 $Introduce = new DB('resume_introduce');
 $Contact = new DB('resume_contact');
 $Banner = new DB('resume_banner');
+$Skill = new DB('resume_skill');
 
 ?>
 
@@ -55,20 +56,20 @@ $Banner = new DB('resume_banner');
                         <a class="nav-link" href="#contact">Contact</a>
                     </li>
                     <?php
-          if (isset($_SESSION['user'])) {
-          ?>
+                    if (isset($_SESSION['user'])) {
+                    ?>
                     <li class="nav-item">
                         <a class="nav-link" href="./back.php">Back</a>
                     </li>
                     <?php
-          } else {
-          ?>
+                    } else {
+                    ?>
                     <li class="nav-item">
                         <a class="nav-link" href="./back/login.php">Login</a>
                     </li>
                     <?php
-          }
-          ?>
+                    }
+                    ?>
                 </ul>
             </div>
         </div>
@@ -119,11 +120,109 @@ $Banner = new DB('resume_banner');
                 Skills
             </h2>
         </div>
-        <div class="container">
-            
-        </div>
+        <div class="container-fluid skill_card_group">
+            <div class="skill_card_out">
+                <div class="skill_card skill_card_frontend">
+                    <div class="skill_card_front">
+                        Front End
+                    </div>
+                    <div class="skill_card_back">
+                        <?php
+                        $datas1 = $Skill->all(['type'=>1,'sh'=>1],"ORDER BY `order_num` DESC");
+                        foreach ($datas1 as $key => $data) {
+                        ?>
+                        <div class="skill_item">
+                            <div class="skill_item_title">
+                                •&nbsp;&nbsp;<?=$data['title']?>
+                            </div>
+                            <div class="skill_item_text">
+                                <?=$data['text']?>
+                            </div>
+                        </div>
+                        <?php
+                        }
+                        ?>
+                    </div>
+                </div>
+            </div>
 
+            <div class="skill_card_out">
+                <div class="skill_card skill_card_backend">
+                    <div class="skill_card_front">
+                        Back End
+                    </div>
+                    <div class="skill_card_back">
+                        <?php
+                        $datas2 = $Skill->all(['type'=>2,'sh'=>1],"ORDER BY `order_num` DESC");
+                        foreach ($datas2 as $key => $data) {
+                        ?>
+                        <div class="skill_item">
+                            <div class="skill_item_title">
+                                •&nbsp;&nbsp;<?=$data['title']?>
+                            </div>
+                            <div class="skill_item_text">
+                                <?=$data['text']?>
+                            </div>
+                        </div>
+                        <?php
+                        }
+                    ?>
+                    </div>
+                </div>
+            </div>
+
+            <div class="skill_card_out">
+                <div class="skill_card skill_card_design">
+                    <div class="skill_card_front">
+                        Design
+                    </div>
+                    <div class="skill_card_back">
+                        <?php
+                        $datas3 = $Skill->all(['type'=>3,'sh'=>1],"ORDER BY `order_num` DESC");
+                        foreach ($datas3 as $key => $data) {
+                        ?>
+                        <div class="skill_item">
+                            <div class="skill_item_title">
+                                •&nbsp;&nbsp;<?=$data['title']?>
+                            </div>
+                            <div class="skill_item_text">
+                                <?=$data['text']?>
+                            </div>
+                        </div>
+                        <?php
+                        }
+                        ?>
+                    </div>
+                </div>
+            </div>
+
+            <div class="skill_card_out">
+                <div class="skill_card skill_card_framework">
+                    <div class="skill_card_front">
+                        Framework
+                    </div>
+                    <div class="skill_card_back">
+                        <?php
+                        $datas4 = $Skill->all(['type'=>4,'sh'=>1],"ORDER BY `order_num` DESC");
+                        foreach ($datas4 as $key => $data) {
+                        ?>
+                        <div class="skill_item">
+                            <div class="skill_item_title">
+                                •&nbsp;&nbsp;<?=$data['title']?>
+                            </div>
+                            <div class="skill_item_text">
+                                <?=$data['text']?>
+                            </div>
+                        </div>
+                        <?php
+                        }
+                        ?>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
+
     <!-- introduce end -->
 
     <!-- Resume -->
@@ -139,10 +238,10 @@ $Banner = new DB('resume_banner');
             <div class="resume_itme_group col-lg-4 col-md-5 col-sm-10 mx-4 my-4 text-left">
                 <h4>學習歷程</h4>
                 <?php
-        $Edu = new DB('resume_education');
-        $edus = $Edu->all(['sh' => 1], "ORDER BY `order_num` DESC");
-        foreach ($edus as $key => $edu) {
-        ?>
+                $Edu = new DB('resume_education');
+                $edus = $Edu->all(['sh' => 1], "ORDER BY `order_num` DESC");
+                foreach ($edus as $key => $edu) {
+                ?>
                 <div class="resume_items">
                     <div class="resume_item_title  resume_item">
                         <?= $edu['title'] ?>
@@ -156,17 +255,17 @@ $Banner = new DB('resume_banner');
 
                 </div>
                 <?php
-        }
-        ?>
+                }
+                ?>
             </div>
 
             <div class="resume_itme_group col-lg-4 col-md-5 col-sm-10 mx-4 my-4 text-left">
                 <h4>工作經歷</h4>
                 <?php
-        $Resume = new DB('resume_resume');
-        $resumes = $Resume->all(['sh' => 1], "ORDER BY `order_num` DESC");
-        foreach ($resumes as $key => $resume) {
-        ?>
+                $Resume = new DB('resume_resume');
+                $resumes = $Resume->all(['sh' => 1], "ORDER BY `order_num` DESC");
+                foreach ($resumes as $key => $resume) {
+                ?>
                 <div class="resume_items">
 
                     <div class="resume_item_title resume_item">
@@ -180,8 +279,8 @@ $Banner = new DB('resume_banner');
                     </div>
                 </div>
                 <?php
-        }
-        ?>
+                }
+                ?>
             </div>
 
         </div>
@@ -379,42 +478,48 @@ $(document).ready(function() {
 
     // myContactBtn click add message
     $('.myContactBtn').on('click', function() {
-    let email = $('#email').val();
-    let name = $('#name').val();
-    let title = $('#title').val();
-    let text = $('#text').val();
-    let tel = $('#tel').val();
-
-   
-    if (email == '' || name == '' || title == '' || text == '' || tel == '') {
-        Swal.fire({
-            icon: 'error',
-            title: '新增失敗',
-            text: '資料尚未填寫完畢!',
-        })
-
-    } else {
+        let email = $('#email').val();
+        let name = $('#name').val();
+        let title = $('#title').val();
+        let text = $('#text').val();
+        let tel = $('#tel').val();
 
 
-        $.post('./api/save_message.php', {email,name,title,text,tel}, (res) => {
+        if (email == '' || name == '' || title == '' || text == '' || tel == '') {
             Swal.fire({
-                icon: 'success',
-                title: '送出成功',
-                text: '成功送出一筆資料!',
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    let email = $('#email').val('');
-                    let name = $('#name').val('');
-                    let title = $('#title').val('');
-                    let text = $('#text').val('');
-                    let tel = $('#tel').val('');
-                }
+                icon: 'error',
+                title: '新增失敗',
+                text: '資料尚未填寫完畢!',
             })
 
-            // console.log(res);
-        })
-    }
-})
+        } else {
+
+
+            $.post('./api/save_message.php', {
+                email,
+                name,
+                title,
+                text,
+                tel
+            }, (res) => {
+                Swal.fire({
+                    icon: 'success',
+                    title: '送出成功',
+                    text: '成功送出一筆資料!',
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        let email = $('#email').val('');
+                        let name = $('#name').val('');
+                        let title = $('#title').val('');
+                        let text = $('#text').val('');
+                        let tel = $('#tel').val('');
+                    }
+                })
+
+                // console.log(res);
+            })
+        }
+    })
 })
 
 
@@ -469,8 +574,6 @@ $('.Portfolio_Btn_item').on('click', function() {
     $('.Portfolio_Btn_item').removeClass('active');
     $(this).addClass('active');
 })
-
-
 </script>
 
 </html>
