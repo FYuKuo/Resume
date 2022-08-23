@@ -123,15 +123,15 @@ if(empty($_SESSION['user'])){
     </script>
 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+    
+    <!-- del -->
+    <script src="./js/del.js"></script>
 
     <!-- resume orderbtn -->
     <script src="./js/resume_orderbtn.js"></script>
 
     <!-- resume sh -->
     <script src="./js/resume_sh.js"></script>
-
-    <!-- resume del -->
-    <script src="./js/resume_del.js"></script>
 
     <!-- resume add -->
     <script src="./js/resume_add.js"></script>

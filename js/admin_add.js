@@ -1,4 +1,4 @@
-// resume_add
+// admin_add
 $('.form_group').on('click', '#addAdminBtn', function() {
     let acc = $('#acc').val();
     let pw = $('#pw').val();

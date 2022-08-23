@@ -9,5 +9,7 @@ $data['acc'] = $_POST['acc'];
 $data['pw'] = $_POST['pw'];
 $data['email'] = $_POST['email'];
 
-$Admin->save($data);
+if(!empty($data)){
+    $Admin->save($data);
+}
 ?>

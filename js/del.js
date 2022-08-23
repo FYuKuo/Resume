@@ -15,7 +15,7 @@ $('.form_item_del').click(function() {
     }).then((result) => {
         if (result.isConfirmed) {
 
-            $.post('./api/resume_del.php',{id:id,table:table},(res)=>{
+            $.post('./api/del.php',{id:id,table:table},(res)=>{
                 
                 console.log(res);
 

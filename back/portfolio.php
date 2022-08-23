@@ -85,7 +85,7 @@ $rows = $Portfolio->all("ORDER BY `order_num` DESC");
                         <!-- modal-footer -->
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
-                            <button type="submit" class="btn btn-primary" id="addAdminBtn">確定新增</button>
+                            <button type="submit" class="btn btn-primary">確定新增</button>
                         </div>
                         <!-- modal-footer end -->
 
