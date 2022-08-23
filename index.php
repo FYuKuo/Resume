@@ -118,8 +118,11 @@ $Banner = new DB('resume_banner');
             <h2>
                 Skills
             </h2>
-
         </div>
+        <div class="container">
+            
+        </div>
+
     </div>
     <!-- introduce end -->
 
@@ -343,6 +346,7 @@ $Banner = new DB('resume_banner');
 <script>
 $(document).ready(function() {
 
+    // scroll nav change
     $(document).scroll(function() {
 
         if ($(document).scrollTop() > 150) {
@@ -360,7 +364,7 @@ $(document).ready(function() {
         $('.myNav').addClass('shadow');
     }
 
-    // Portfolio hover
+    // Portfolio hover show btn
     $('.Portfolio_items').on('mouseenter', '.Portfolio_item_img>img', function() {
 
         $(this).next().addClass('Portfolio_item_fly_show');
@@ -373,8 +377,8 @@ $(document).ready(function() {
 
     Portfolio(2)
 
-    // myContactBtn click
-$('.myContactBtn').on('click', function() {
+    // myContactBtn click add message
+    $('.myContactBtn').on('click', function() {
     let email = $('#email').val();
     let name = $('#name').val();
     let title = $('#title').val();
@@ -415,7 +419,7 @@ $('.myContactBtn').on('click', function() {
 
 
 
-// Portfolio_Btn_item click
+// Portfolio_Btn_item click show type
 function Portfolio(type) {
     $('.Portfolio_items').children().remove();
 
@@ -460,6 +464,7 @@ function Portfolio(type) {
     })
 }
 
+// Portfolio Btn active
 $('.Portfolio_Btn_item').on('click', function() {
     $('.Portfolio_Btn_item').removeClass('active');
     $(this).addClass('active');

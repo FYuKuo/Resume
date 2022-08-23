@@ -104,7 +104,7 @@ class DB
             $sql = "INSERT INTO `$this->table` (`$col`) VALUES (\"$val\")";
         }
 
-        echo $sql;
+        // echo $sql;
 
         return $this->pdo->exec($sql);
     }

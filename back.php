@@ -84,6 +84,9 @@ if(empty($_SESSION['user'])){
             <a href="?do=portfolio" class=" left_item <?=($do == 'portfolio')?'left_item_active':''?>">
                 <span><i class="fa-solid fa-palette"></i></span> 作品集管理
             </a>
+            <a href="?do=skill" class=" left_item <?=($do == 'skill')?'left_item_active':''?>">
+                <span><i class="fa-solid fa-toolbox"></i></span> 技能資訊管理
+            </a>
             <a href="?do=contact" class=" left_item <?=($do == 'contact')?'left_item_active':''?>">
                 <span><i class="fa-solid fa-phone"></i></span> 聯絡資訊管理
             </a>
@@ -140,7 +143,7 @@ if(empty($_SESSION['user'])){
     <script src="./js/admin_add.js"></script>
 
     <script>
-    // nav
+    // phone nav show
     $('.left_toggler').click(function() {
         $('.left').fadeToggle();
     })
@@ -191,6 +194,7 @@ if(empty($_SESSION['user'])){
 
     });
 
+    // get upload img data & change inputDiv BG
     function readURL(e) {
 
         console.log(e.files);
@@ -212,16 +216,19 @@ if(empty($_SESSION['user'])){
 
     }
 
+    // dragenter change css
     function dragIn(e) {
 
         $('.drop_item').addClass('dragActive');
     }
 
+    // dragout change css
     function dragOut(e) {
 
         $('.drop_item').removeClass('dragActive');
     }
 
+    // dragend change css
     function drogOff(e) {
 
         $('.drop_item').removeClass('dragActive');
