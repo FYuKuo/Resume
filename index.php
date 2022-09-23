@@ -103,7 +103,7 @@ $Skill = new DB('resume_skill');
                     <img src="./img/photo-1.jpg" alt="" class="myPhoto">
                 </div>
 
-                <div class="myText col-lg-5 col-sm-10 mx-4 my-4">
+                <div class="myText col-lg-5 col-sm-10 mx-4 my-4 ">
                     <pre><?= $Introduce->find(1)['text'] ?></pre>
                 </div>
 
@@ -574,6 +574,14 @@ $('.Portfolio_Btn_item').on('click', function() {
     $('.Portfolio_Btn_item').removeClass('active');
     $(this).addClass('active');
 })
+
+
+$('.nav-item').on('click',function(){
+    $('.navbar-collapse').removeClass('show');
+    $('.navbar-toggler').addClass('collapsed');
+    $('.navbar-toggler').attr('aria-expanded',false);
+})
+
 </script>
 
 </html>
