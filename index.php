@@ -29,31 +29,32 @@ $Skill = new DB('resume_skill');
     <nav class="navbar navbar-expand-sm navbar-light bg-light py-2 fixed-top myNav">
         <div class="container-fluid">
 
-            <a class="navbar-brand myLogo" href="./index.php">FangYu's Resume</a>
+            <a class="navbar-brand myLogo" href="./index.php" style="display: none;">FangYu's Resume</a>
+
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02"
                 aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
 
             <div class="collapse navbar-collapse justify-content-end" id="navbarTogglerDemo02">
-                <ul class="navbar-nav mt-2 mt-lg-0 ">
+                <ul class="navbar-nav mt-2 mt-lg-0 " style="display: none;">
                     <li class="nav-item active">
-                        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="#" data-id="home">Home <span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#introduce">About</a>
+                        <a class="nav-link" href="#" data-id="introduce">About</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#skill">Skills</a>
+                        <a class="nav-link" href="#" data-id="skill">Skills</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#Resume">Resume</a>
+                        <a class="nav-link" href="#" data-id="Resume">Resume</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#Portfolio">Portfolio</a>
+                        <a class="nav-link" href="#" data-id="Portfolio">Portfolio</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#contact">Contact</a>
+                        <a class="nav-link" href="#" data-id="contact">Contact</a>
                     </li>
                     <?php
                     if (isset($_SESSION['user'])) {
@@ -77,9 +78,9 @@ $Skill = new DB('resume_skill');
     <!-- nav end -->
 
     <!-- banner -->
-    <div class="banner" style="background-image: url('./img/<?= $Banner->find(1)['img'] ?>');">
+    <div class="banner" style="background-image: url('./img/<?= $Banner->find(1)['img'] ?>');" id="home">
 
-        <div class="container bannerText">
+        <div class="container bannerText" style="display: none;">
             <h1 class="display-4"><?= $Banner->find(1)['title'] ?></h1>
             <p class="lead"><?= $Banner->find(1)['text'] ?></p>
         </div>
@@ -96,7 +97,7 @@ $Skill = new DB('resume_skill');
 
         </div>
 
-        <div class="container myIntroduce ">
+        <div class="container myIntroduce " style="display: none;">
 
             <div class="row d-flex justify-content-center align-items-center">
                 <div class="col-lg-5 col-sm-10 mx-4 d-flex justify-content-center my-4">
@@ -442,6 +443,21 @@ $Skill = new DB('resume_skill');
 <script>
 $(document).ready(function() {
 
+    let introduce = parseInt($('#introduce').offset().top)/2;
+
+    $('.bannerText,.myLogo,.navbar-nav').fadeIn(1500);
+
+    //scroll change
+    $(document).scroll(function(){
+        if($(document).scrollTop() > introduce){
+            $('.myTitle,.myIntroduce').fadeIn(1500);
+        }
+    })
+
+    if($(document).scrollTop() > introduce){
+            $('.myTitle,.myIntroduce').fadeIn(1500);
+    }
+
     // scroll nav change
     $(document).scroll(function() {
 
@@ -519,8 +535,6 @@ $(document).ready(function() {
     })
 })
 
-
-
 // Portfolio_Btn_item click show type
 function Portfolio(type) {
     $('.Portfolio_items').children().remove();
@@ -561,8 +575,8 @@ function Portfolio(type) {
 
         }
 
-
         $('.Portfolio_items').append(addhtml);
+
     })
 }
 
@@ -572,12 +586,29 @@ $('.Portfolio_Btn_item').on('click', function() {
     $(this).addClass('active');
 })
 
-
+// nav click toggle
 $('.nav-item').on('click',function(){
     $('.navbar-collapse').removeClass('show');
     $('.navbar-toggler').addClass('collapsed');
     $('.navbar-toggler').attr('aria-expanded',false);
 })
+
+// nav click scroll
+$('.nav-link').on('click',function(){
+    let id = $(this).data('id');
+
+    let target_top = parseInt($('#'+id).offset().top)-68;
+
+    let myBody = (window.opera) ? (document.compatMode == "CSS1Compat" ? $('html') : $('body')) : $('html,body');
+
+    myBody.animate({
+        scrollTop: target_top
+     		}, 800
+    )
+
+})
+
+
 
 </script>
 
